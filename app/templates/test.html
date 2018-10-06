@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+    {# 测试页面 #}
+    {# 继承layout.html中的content #}
+    {{ super() }}
+    {#yangyang#}
+    {# jinja2语法 #}
+    {% with errors = get_flashed_messages(category_filter=["error"]) %}
+    {% if errors %}
+        {{ errors }}haha
+    {% endif %}
+    {%  endwith %}
+    <hr/>
+    {# 如果.school不存在，设置为未名，不是设置的默认值 #}
+    {{ data.school | default("未名") }}
+
+    {# |代表管道，把左边的值传到右边 #}
+    {{ data | length() }}
+
+    {% for key, value in data.items() %}
+        {{ key }}:
+        {{ value }}
+    {% endfor %}
+{% endblock %}
+
